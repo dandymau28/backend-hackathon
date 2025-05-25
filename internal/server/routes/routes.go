@@ -23,6 +23,7 @@ func ConfigureRoutes(server *s.Server) {
 	postHandler := handlers.NewPostHandlers(postService)
 	authHandler := handlers.NewAuthHandler(server)
 	registerHandler := handlers.NewRegisterHandler(server)
+	recommendationHandler := handlers.NewRecommendationHandler(server)
 
 	server.Echo.Use(middleware.Logger())
 
@@ -31,6 +32,7 @@ func ConfigureRoutes(server *s.Server) {
 	server.Echo.POST("/login", authHandler.Login)
 	server.Echo.POST("/register", registerHandler.Register)
 	server.Echo.POST("/refresh", authHandler.RefreshToken)
+	server.Echo.POST("/api/v1/recommendation", recommendationHandler.Recommmend)
 
 	fmt.Println(server.Config.Auth.AccessSecret)
 

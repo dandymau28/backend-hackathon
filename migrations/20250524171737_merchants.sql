@@ -1,10 +1,9 @@
 -- +goose Up
 -- +goose StatementBegin
-CREATE TABLE users (
-    id SERIAL PRIMARY KEY, 
-    name VARCHAR(255) NOT NULL,
-    password VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL UNIQUE,
+CREATE TABLE merchants (
+    id SERIAL PRIMARY KEY,
+    name varchar(255) NOT NULL,
+    ratings int NOT NULL DEFAULT 0,
     deleted_at TIMESTAMPTZ,
     created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
@@ -13,5 +12,5 @@ CREATE TABLE users (
 
 -- +goose Down
 -- +goose StatementBegin
-DROP TABLE users;
+DROP TABLE merchants;
 -- +goose StatementEnd

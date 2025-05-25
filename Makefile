@@ -26,3 +26,6 @@ lint:
 
 goose-create: # Creates goose migration. Example: NAME=migration_name make goose-create
 	goose -dir migrations create $(NAME) sql
+
+goose-migrate: # Runs goose migration. Example: VERSION=1 make goose-migrate
+	goose -dir migrations postgres "postgres://postgres:password@localhost:5432/hackathon?sslmode=disable" up $(VERSION)

@@ -9,11 +9,11 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/nix-united/golang-echo-boilerplate/docs"
 	"github.com/nix-united/golang-echo-boilerplate/internal/config"
 	"github.com/nix-united/golang-echo-boilerplate/internal/db"
 	"github.com/nix-united/golang-echo-boilerplate/internal/server"
 	"github.com/nix-united/golang-echo-boilerplate/internal/server/routes"
+	"github.com/swaggo/swag/example/basic/docs"
 
 	"github.com/caarlos0/env/v11"
 	"github.com/joho/godotenv"
@@ -67,6 +67,8 @@ func run() error {
 		if err = app.Start(cfg.HTTP.Port); err != nil {
 			slog.Error("Server error", "err", err.Error())
 		}
+
+		slog.Info("Server runs on port: %v", cfg.HTTP.Port)
 	}()
 
 	shutdownChannel := make(chan os.Signal, 1)
